@@ -1,0 +1,48 @@
+﻿@model List<PersonasAPI.Models.UsuarioModelo>
+@{
+    ViewData["Title"] = "ListaUsuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-black">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-6" style="display: flex; justify-content: left; align-items: center;">
+                <div>Lista Usuarios</div>
+            </div>
+            <div class="col-6" align="right">
+                <a asp-action="GuardarUsuario" asp-controller="Usuario" class="btn btn-outline-success"><i class="bi bi-plus-circle-dotted"></i> Crear Usuario</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Fecha Creacion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td scope="col">@item.FullName<br />@item.FullDNI</td>
+                            <td scope="col">@item.Username</td>
+                            <td scope="col">@item.Pass</td>
+                            <td scope="col">@item.CreatedAt</td>
+                            <td scope="col">
+                                <a class="btn btn-outline-warning" asp-action="EditarUsuario" asp-controller="Usuario" asp-route-IdUser="@item.IdUser">Editar</a>
+                                <a class="btn btn-outline-danger" asp-action="EliminarUsuario" asp-controller="Usuario" asp-route-IdUser="@item.IdUser">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

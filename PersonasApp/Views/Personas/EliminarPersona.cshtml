@@ -1,0 +1,23 @@
+﻿@model PersonasAPI.Models.PersonaModelo
+@{
+    ViewData["Title"] = "EliminarPersona";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-black">
+    <div class="card-header text-center">
+        Eliminar Persona
+    </div>
+    <div class="card-body">
+        <form class="row g-3" asp-action="EliminarPersona" asp-controller="Personas" method="post">
+            <input type="hidden" id="IdPerson" asp-for="IdPerson">
+            <div class="alert alert-danger" role="alert">
+                ¿Está seguro que desea eliminar el registro y usuario de @Model.FullName
+            </div>
+            <div class="col-12" align="right">
+                <a class="btn btn-outline-warning" asp-action="ListaPersonas" asp-controller="Personas">Cancelar</a>
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+            </div>
+        </form>
+    </div>
+</div>

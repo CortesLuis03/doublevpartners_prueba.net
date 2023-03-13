@@ -1,0 +1,50 @@
+﻿@model PersonasAPI.Models.PersonaModelo
+@{
+    ViewData["Title"] = "FormularioRegistro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-black">
+    <div class="card-header text-center">
+        Crear Persona
+    </div>
+    <div class="card-body">
+        <form class="row g-3" asp-action="GuardarPersona" asp-controller="Personas" method="post">
+            <div class="col-md-6">
+                <label for="Names" class="form-label">Nombres:</label>
+                <input type="text" class="form-control" id="Names" asp-for="Names">
+                <span asp-validation-for="Names" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="Lastnames" class="form-label">Apellidos:</label>
+                <input type="text" class="form-control" id="Lastnames" asp-for="Lastnames">
+                <span asp-validation-for="Lastnames" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label for="DNIType" class="form-label">Tipo de documento:</label>
+                <select id="DNIType" class="form-select" asp-for="DNIType">
+                    <option selected>Seleccionar...</option>
+                    <option value="cc">C.C.</option>
+                    <option value="nit">NIT</option>
+                    <option value="pa">Pasaporte</option>
+                </select>
+                <span asp-validation-for="DNIType" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label for="DNI" class="form-label">Nro. Documento:</label>
+                <input type="number" class="form-control" id="DNI" min="0" asp-for="DNI">
+                <span asp-validation-for="DNI" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="Email" class="form-label">Email:</label>
+                <input type="text" class="form-control" id="Email" asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-12" align="right">
+                <a class="btn btn-outline-danger" asp-action="ListaPersonas" asp-controller="Personas">Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

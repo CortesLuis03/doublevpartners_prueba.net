@@ -1,0 +1,28 @@
+﻿@model PersonasAPI.Models.UsuarioModelo
+@{
+    ViewData["Title"] = "EditarUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card text-black">
+    <div class="card-header text-center">
+        Editar Usuario
+    </div>
+    <div class="card-body">
+        <form class="row g-3" asp-action="EditarUsuario" asp-controller="Usuario" method="post">
+            <input type="hidden" id="IdUser" asp-for="IdUser">
+            <div class="col-md-8">
+                <label for="Username" class="form-label">Persona:</label>
+                <input type="" class="form-control" id="Username" asp-for="Username" readonly/>
+            </div>
+            <div class="col-md-4">
+                <label for="Password" class="form-label">Password:</label>
+                <input type="password" id="Password" class="form-control" asp-for="Pass" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div class="col-12" align="right">
+                <a class="btn btn-outline-danger" asp-action="ListaUsuarios" asp-controller="Usuario">Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

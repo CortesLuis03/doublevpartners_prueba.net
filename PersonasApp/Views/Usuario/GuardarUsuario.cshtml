@@ -1,0 +1,32 @@
+﻿@model PersonasAPI.Models.UsuarioModelo
+@{
+    ViewData["Title"] = "GuardarUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card text-black">
+    <div class="card-header text-center">
+        Crear Usuario
+    </div>
+    <div class="card-body">
+        <form class="row g-3" asp-action="GuardarUsuario" asp-controller="Usuario" method="post">
+            <div class="col-md-8">
+                <label for="Username" class="form-label">Persona:</label>
+                <select id="Username" class="form-select" asp-for="Username">
+                    <option selected>Seleccionar...</option>
+                    @foreach (var item in Model.Personas)
+                    {
+                        <option value="@item.Email">@item.FullName - @item.FullDNI</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="Password" class="form-label">Password:</label>
+                <input type="password" id="Password" class="form-control" asp-for="Pass"/>
+            </div>
+            <div class="col-12" align="right">
+                <a class="btn btn-outline-danger" asp-action="ListaUsuario" asp-controller="Usuario">Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
